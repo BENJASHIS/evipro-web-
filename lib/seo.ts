@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
-export const SITE_URL = 'https://evipro.pe'
+// Destino final verificado: evipro.pe redirige a www.evipro.pe en producción.
+export const SITE_URL = 'https://www.evipro.pe'
 export const CONSULTA_PATH = '/consulta-cannabis-medicinal'
 
 /** Cada página pública declara su URL: no heredar la canonical de la portada. */
