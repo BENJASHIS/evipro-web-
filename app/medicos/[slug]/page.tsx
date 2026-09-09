@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { DOCTORS } from '@/lib/doctors'
 import Nav from '@/app/components/Nav'
+import { publicMetadata } from '@/lib/seo'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -15,10 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const doctor = DOCTORS.find(d => d.slug === slug)
   if (!doctor) return {}
-  return {
-    title: `${doctor.name} · EVIPro`,
-    description: doctor.bio.slice(0, 160),
-  }
+  return publicMetadata(`/medicos/${doctor.slug}`, `${doctor.name} · EVIPro`, doctor.bio.slice(0, 160))
 }
 
 export default async function DoctorPage({ params }: Props) {

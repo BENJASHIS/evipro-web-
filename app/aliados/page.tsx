@@ -4,11 +4,10 @@ import Badge from '@/app/components/ui/Badge'
 import Image from 'next/image'
 import PropuestaForm from './PropuestaForm'
 import { ALIADOS } from '@/lib/aliados'
+import { publicMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Aliados · EVIPro',
-  description: 'Farmacias, centros, asociaciones y proyectos con los que trabaja EVIPro en Cusco.',
-}
+export const metadata: Metadata = publicMetadata('/aliados', 'Aliados · EVIPro',
+  'Farmacias, centros, asociaciones y proyectos con los que trabaja EVIPro en Cusco.')
 
 export default function AliadosPage() {
   return (

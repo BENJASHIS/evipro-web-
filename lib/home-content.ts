@@ -16,13 +16,29 @@ export const RENPUC_NOMBRE =
 export const WHATSAPP = '942185939'
 
 export const HERO = {
-  etiqueta: 'Cusco · Perú',
+  etiqueta: 'Consulta de cannabis medicinal · Cusco y online',
   titulo: 'El cannabis no sirve',
   titulo2: 'para todo. Para esto sí.',
   subtitulo:
     'Dolor crónico y neuropático · migraña · espasticidad · náuseas por quimioterapia. ' +
     'Con receta, médico colegiado y seguimiento.',
   credenciales: 'Dr. Carlos Jara · Médico Cirujano · CMP 82817 · RNA A10684',
+  // Dos puertas, no dos acciones iguales: el paciente local es la base del
+  // negocio (membresía, seguimiento, referidos) y el viajero el crecimiento.
+  // Por eso la primera es el botón lleno y la segunda va delineada.
+  puertas: {
+    local: {
+      rotulo: 'Vivo en Perú',
+      texto: 'Consulta con seguimiento y receta si corresponde.',
+      cta: 'Agendar consulta →',
+    },
+    viaje: {
+      rotulo: 'Estoy de viaje',
+      texto: 'Empieza el trámite antes de llegar a Cusco.',
+      cta: 'Plan Turista →',
+    },
+  },
+  escribir: '¿Prefieres escribir?',
 }
 
 export type Indicacion = { titulo: string; matiz: string; anchoCompleto?: boolean }
@@ -181,6 +197,10 @@ export const MEDICO = {
   especialidades: 'Médico Cirujano · Cannabis medicinal y medicina de altura',
   credenciales: 'CMP 82817 · RNA A10684',
   direccion: 'Av. Infancia 410, Consultorio 2 · Wanchaq, Cusco',
+  // Misma ruta que la ficha de `lib/doctors.ts`. Escrita a mano aquí para no
+  // acoplar el contenido de la portada al catálogo de médicos; el candado
+  // contra la desincronización es un test, no un import.
+  foto: '/images/medicos/dr-jara.jpeg',
 }
 
 export const MEMBRESIA = {
@@ -204,9 +224,8 @@ export const MEMBRESIA = {
  *  truncada; el resto del título sigue cargando la búsqueda.
  *  Longitudes pensadas para no ser truncadas: ~55 y ~155 caracteres. */
 export const META_PORTADA = {
-  titulo: 'EVIPro · Cannabis medicinal en Cusco, con receta médica',
+  titulo: 'Cannabis medicinal en Cusco y online | EVIPro',
   descripcion:
-    'Tratamiento con cannabis medicinal para dolor crónico y neuropático, ' +
-    'migraña y espasticidad. Con receta y seguimiento. Dr. Carlos Jara, ' +
-    'CMP 82817 · Cusco.',
+    'Consulta de cannabis medicinal presencial en Cusco y online en Perú. ' +
+    'Dr. Carlos Jara, CMP 82817. Evaluación, seguimiento y receta solo si corresponde.',
 }

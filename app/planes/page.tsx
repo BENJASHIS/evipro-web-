@@ -9,6 +9,7 @@ import ConfiguradorEvipro from './ConfiguradorEvipro'
 import ConfiguradorTurista from './ConfiguradorTurista'
 import PlanCTA from './PlanCTA'
 import LineaConsultas from './LineaConsultas'
+import { publicMetadata } from '@/lib/seo'
 
 const HERRAMIENTAS_MIEMBRO = [
   {
@@ -40,11 +41,9 @@ const TURISTA_INCLUYE = [
   'Coordinación documentaria con farmacia autorizada',
 ]
 
-export const metadata: Metadata = {
-  title: 'Planes de consulta y membresía en cannabis medicinal · EVIPro',
-  description:
-    'Consulta médica de cannabis medicinal en Perú: evaluación, receta si corresponde, apoyo RENPUC y coordinación documentaria con farmacia autorizada. EVIPro no vende productos.',
-}
+export const metadata: Metadata = publicMetadata('/planes',
+  'Planes de consulta y membresía en cannabis medicinal · EVIPro',
+  'Consulta médica de cannabis medicinal en Perú: evaluación, receta si corresponde, apoyo RENPUC y coordinación documentaria con farmacia autorizada. EVIPro no vende productos.')
 
 function CheckList({ items, tone = 'brand' }: { items: string[]; tone?: 'brand' | 'yellow' | 'muted' }) {
   const color = {

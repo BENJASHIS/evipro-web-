@@ -3,11 +3,10 @@ import { DOCTORS } from '@/lib/doctors'
 import DoctorCard from '@/app/components/DoctorCard'
 import Nav from '@/app/components/Nav'
 import Badge from '@/app/components/ui/Badge'
+import { publicMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Equipo Médico · EVIPro',
-  description: 'Conoce a los especialistas de EVIPro en Cannabis Medicinal, Medicina de Altura, Gerontología y más.',
-}
+export const metadata: Metadata = publicMetadata('/medicos', 'Equipo médico y reservas · EVIPro',
+  'Conoce al equipo médico de EVIPro, su formación y modalidades de atención. Consulta presencial en Cusco y teleconsulta en Perú.')
 
 export default function MedicosPage() {
   return (

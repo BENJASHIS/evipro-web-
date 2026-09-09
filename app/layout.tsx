@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lora } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import Script from 'next/script';
+import { SITE_URL } from '@/lib/seo';
 import "./globals.css";
 
 // GA4 (Google Ads / Analytics). El measurement ID es público: viaja en el HTML del cliente.
@@ -27,8 +28,9 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "EVIPro · Medicina Integral y Cannabis Medicinal",
-  description: "Plataforma de membresías médicas en Medicina Integral y Cannabis Medicinal. Cusco, Perú.",
+  metadataBase: new URL(SITE_URL),
+  title: "EVIPro · Consulta de cannabis medicinal en Cusco y online",
+  description: "Evaluación médica presencial en Cusco y por teleconsulta en Perú. Conoce al médico, las modalidades y los precios de consulta en EVIPro.",
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '48x48' },

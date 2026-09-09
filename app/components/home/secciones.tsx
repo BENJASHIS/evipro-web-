@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { ReactNode } from 'react'
 import Badge from '@/app/components/ui/Badge'
 import Button from '@/app/components/ui/Button'
@@ -33,21 +34,67 @@ function conAbbr(texto: string): ReactNode[] {
 export function Hero() {
   return (
     <section className="max-w-5xl mx-auto px-6 pt-20 pb-16">
-      <Badge className="mb-6">{HERO.etiqueta}</Badge>
-      <h1 className="text-4xl md:text-5xl font-light font-serif italic leading-tight mb-6 max-w-2xl">
-        {HERO.titulo}<br />{HERO.titulo2}
-      </h1>
-      <p className="text-muted text-lg mb-8 max-w-xl">{HERO.subtitulo}</p>
-      <div className="flex flex-wrap items-center gap-4">
-        <Button variant="primary" href={AGENDAR}>Agendar consulta →</Button>
-        <a
-          href={`https://wa.me/51${WHATSAPP}`}
-          className="text-muted text-sm hover:text-brand transition-colors"
-        >
-          o escríbenos por WhatsApp
-        </a>
+      <div className="grid md:grid-cols-12 gap-12 items-start">
+        <div className="md:col-span-7">
+          <Badge className="mb-6">{HERO.etiqueta}</Badge>
+          <h1 className="text-4xl md:text-5xl font-light font-serif italic leading-tight mb-6">
+            {HERO.titulo}<br />{HERO.titulo2}
+          </h1>
+          <p className="text-muted text-lg mb-8">{HERO.subtitulo}</p>
+
+          {/* Las dos puertas. El local va lleno y el viajero delineado: rutar a
+              dos públicos no es darles el mismo peso. */}
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="border border-strong rounded-lg p-5 flex flex-col gap-3">
+              <p className="text-xs font-mono uppercase tracking-widest text-brand">
+                {HERO.puertas.local.rotulo}
+              </p>
+              <p className="text-muted text-sm leading-relaxed grow">{HERO.puertas.local.texto}</p>
+              <Button variant="primary" href={AGENDAR} className="w-full text-center">
+                {HERO.puertas.local.cta}
+              </Button>
+            </div>
+            <div className="border border-subtle rounded-lg p-5 flex flex-col gap-3">
+              <p className="text-xs font-mono uppercase tracking-widest text-faint">
+                {HERO.puertas.viaje.rotulo}
+              </p>
+              <p className="text-muted text-sm leading-relaxed grow">{HERO.puertas.viaje.texto}</p>
+              <Button variant="outline" href="/planes#turista" className="w-full text-center">
+                {HERO.puertas.viaje.cta}
+              </Button>
+            </div>
+          </div>
+
+          {/* WhatsApp deja de ser un texto tenue: en Perú es el canal por el que
+              de verdad escribe la gente. */}
+          <div className="flex flex-wrap items-center gap-4 mt-5">
+            <span className="text-muted text-sm font-mono">{HERO.escribir}</span>
+            <Button variant="outline" href={`https://wa.me/51${WHATSAPP}`} className="px-5 py-2">
+              WhatsApp
+            </Button>
+          </div>
+        </div>
+
+        {/* La prueba de que hay un médico detrás sube a la portada: estaba a dos
+            clics, en /medicos. */}
+        <div className="md:col-span-5 border border-subtle rounded-lg overflow-hidden">
+          <div className="relative h-72">
+            <Image
+              src={MEDICO.foto}
+              alt={MEDICO.nombre}
+              fill
+              priority
+              sizes="(min-width: 768px) 40vw, 100vw"
+              className="object-cover object-[center_18%]"
+            />
+          </div>
+          <div className="p-5 flex flex-col gap-1.5">
+            <p className="text-base font-light">Dr. {MEDICO.nombre}</p>
+            <p className="text-brand text-xs font-mono">{MEDICO.credenciales}</p>
+            <p className="text-muted text-sm leading-relaxed">{MEDICO.especialidades}</p>
+          </div>
+        </div>
       </div>
-      <p className="text-faint text-sm mt-8">{HERO.credenciales}</p>
     </section>
   )
 }

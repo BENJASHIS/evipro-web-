@@ -9,6 +9,7 @@ import Marca from '@/app/components/ui/Marca'
 // «Médicos» no está como enlace a propósito: el botón Agendar lleva ahí y
 // decirlo dos veces era la misma puerta repetida.
 const LINKS = [
+  { href: '/consulta-cannabis-medicinal', label: 'Consulta médica' },
   { href: '/aliados', label: 'Aliados' },
   { href: '/planes', label: 'Planes' },
   { href: '/planes#turista', label: 'Turistas' },

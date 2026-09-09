@@ -1,6 +1,8 @@
 import { PRECIOS_CONSULTA, PRECIO_DOMICILIO } from '@/lib/consulta-pricing'
+import { publicMetadata } from '@/lib/seo'
 
-export const metadata = { title: 'Términos y Condiciones · EVIPro' }
+export const metadata = publicMetadata('/terminos', 'Términos y Condiciones · EVIPro',
+  'Condiciones de uso, consultas y membresías de EVIPro. Revisa las condiciones del servicio antes de reservar.')
 
 export default function TerminosPage() {
   return (

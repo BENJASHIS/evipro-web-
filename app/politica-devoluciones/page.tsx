@@ -1,4 +1,7 @@
-export const metadata = { title: 'Política de Cancelaciones · EVIPro' }
+import { publicMetadata } from '@/lib/seo'
+
+export const metadata = publicMetadata('/politica-devoluciones', 'Política de Cancelaciones · EVIPro',
+  'Consulta las condiciones de cancelación y devolución aplicables a los servicios de EVIPro.')
 
 export default function PoliticaDevolucionesPage() {
   return (
