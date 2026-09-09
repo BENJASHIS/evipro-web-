@@ -123,7 +123,7 @@ export default function RegistroPage() {
   const isForeign = form.doc_type !== 'dni'
 
   return (
-    <main className="min-h-screen bg-ink px-4 py-10 sm:px-6">
+    <main className="public-page min-h-screen bg-ink px-4 py-10 sm:px-6">
       <div className="mx-auto grid w-full max-w-5xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
         <aside className="pt-2 lg:sticky lg:top-8">
           <div className="mb-10"><Marca /></div>

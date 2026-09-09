@@ -35,4 +35,21 @@ describe('contraste de los tokens de texto', () => {
   it('faint sigue siendo más tenue que muted: la jerarquía se mantiene', () => {
     expect(contraste(token('faint'), fondo())).toBeLessThan(contraste(token('muted'), fondo()))
   })
+
+  it('el texto tenue de portada cumple AA sobre su fondo verde', () => {
+    const css = readFileSync(resolve(process.cwd(), 'app/globals.css'), 'utf-8')
+    const portada = css.match(/body:has\(\.public-page\) > footer\s*\{([^}]+)\}/)![1]
+    const fondo = portada.match(/background:\s*(#[0-9a-fA-F]{6})/)![1]
+    const tenue = portada.match(/--color-faint:\s*(#[0-9a-fA-F]{6})/)![1]
+    expect(contraste(tenue, fondo)).toBeGreaterThanOrEqual(4.5)
+    expect(contraste(tenue, fondo)).toBeLessThan(contraste(token('muted'), fondo))
+  })
+
+  it.each(['muted', 'faint', 'brand'])('%s cumple AA en los paneles crema', nombre => {
+    const css = readFileSync(resolve(process.cwd(), 'app/globals.css'), 'utf-8')
+    const panel = css.match(/\.public-page \.public-panel\s*\{([^}]+)\}/)![1]
+    const fondo = panel.match(/background:\s*(#[0-9a-fA-F]{6})/)![1]
+    const texto = panel.match(new RegExp(`--color-${nombre}:\\s*(#[0-9a-fA-F]{6})`))![1]
+    expect(contraste(texto, fondo)).toBeGreaterThanOrEqual(4.5)
+  })
 })

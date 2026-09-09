@@ -5,7 +5,7 @@
 // URL estable para el seguimiento de conversiones de Google Ads.
 export default function CheckoutSuccessPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-ink text-white px-6">
+    <main className="public-page min-h-screen flex items-center justify-center bg-ink text-white px-6">
       <div className="w-full max-w-sm p-8 border border-subtle rounded-lg text-center">
         <p className="text-4xl mb-4">✓</p>
         <p className="text-xs text-brand font-mono uppercase tracking-widest mb-2">Pago recibido</p>

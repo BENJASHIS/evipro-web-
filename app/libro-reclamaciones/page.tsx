@@ -70,7 +70,7 @@ export default function LibroReclamacionesPage() {
 
   if (code) {
     return (
-      <main className="min-h-screen bg-ink text-white flex items-center justify-center px-4">
+      <main className="public-page min-h-screen bg-ink text-white flex items-center justify-center px-4">
         <div className="max-w-md w-full border border-brand/30 rounded-lg p-8 text-center">
           <p className="text-brand text-xs font-mono uppercase tracking-widest mb-4">Reclamación registrada</p>
           <p className="text-gray-300 text-sm mb-6">Tu reclamación ha sido registrada exitosamente. Guarda este código de seguimiento:</p>
@@ -83,7 +83,7 @@ export default function LibroReclamacionesPage() {
   }
 
   return (
-    <main className="min-h-screen bg-ink text-white py-20 px-4">
+    <main className="public-page min-h-screen bg-ink text-white py-20 px-4">
       <div className="max-w-2xl mx-auto">
         <p className="text-xs font-mono uppercase tracking-widest text-brand mb-4">INDECOPI</p>
         <h1 className="text-4xl font-light font-serif italic mb-2">Libro de Reclamaciones</h1>

@@ -16,12 +16,12 @@ export const RENPUC_NOMBRE =
 export const WHATSAPP = '942185939'
 
 export const HERO = {
-  etiqueta: 'Consulta de cannabis medicinal · Cusco y online',
-  titulo: 'El cannabis no sirve',
-  titulo2: 'para todo. Para esto sí.',
+  etiqueta: 'EVIPro · Salud, conocimiento y comunidad',
+  titulo: 'Cuidarnos mejor.',
+  titulo2: 'Crecer en comunidad.',
   subtitulo:
-    'Dolor crónico y neuropático · migraña · espasticidad · náuseas por quimioterapia. ' +
-    'Con receta, médico colegiado y seguimiento.',
+    'Consultas médicas, membresías y un espacio para quienes quieren aportar. ' +
+    'Desde Cusco y por atención online, con un equipo médico detrás.',
   credenciales: 'Dr. Carlos Jara · Médico Cirujano · CMP 82817 · RNA A10684',
   // Dos puertas, no dos acciones iguales: el paciente local es la base del
   // negocio (membresía, seguimiento, referidos) y el viajero el crecimiento.

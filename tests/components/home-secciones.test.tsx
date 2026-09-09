@@ -5,18 +5,20 @@ import {
   EvidenciaLimites,
 } from '@/app/components/home/secciones'
 import { RENPUC_NOMBRE } from '@/lib/home-content'
+import { DOCTORS } from '@/lib/doctors'
 
 describe('Hero', () => {
-  it('lleva un solo CTA primario y apunta a agendar con el dr-jara', () => {
+  it('permite conocer las membresías desde la portada', () => {
     render(<Hero />)
-    const cta = screen.getByRole('link', { name: /agendar consulta/i })
-    expect(cta.getAttribute('href')).toBe('/medicos/dr-jara/agendar')
+    const cta = screen.getByRole('link', { name: /conocer las membresías/i })
+    expect(cta.getAttribute('href')).toBe('/planes#membresias')
   })
 
-  it('muestra las credenciales, que es lo que desactiva el prejuicio', () => {
+  it('muestra la colegiatura de cada médico', () => {
     render(<Hero />)
-    expect(screen.getByText(/CMP 82817/)).toBeTruthy()
-    expect(screen.getByText(/RNA A10684/)).toBeTruthy()
+    for (const doctor of DOCTORS) {
+      expect(screen.getByText(`CMP ${doctor.cmp}`)).toBeTruthy()
+    }
   })
 
   it('no muestra ningún precio', () => {
@@ -117,13 +119,14 @@ describe('PrimeraConsulta', () => {
 
 describe('Membresia', () => {
   it('muestra el precio que le pasan', () => {
-    const { container } = render(<Membresia desde={9.9} />)
+    const { container } = render(<Membresia desde={9.9} basica={5} />)
     expect(container.textContent).toContain('9.9')
   })
 
   it('sin precio disponible, no inventa uno', () => {
-    const { container } = render(<Membresia desde={null} />)
+    const { container } = render(<Membresia desde={null} basica={null} />)
     expect(container.textContent).not.toMatch(/S\/\.?\s?\d/)
-    expect(screen.getByRole('link', { name: /membresía y herramientas/i })).toBeTruthy()
+    expect(screen.getByRole('link', { name: /ver precio y beneficios de básica/i })).toHaveAttribute('href', '/planes#basica')
+    expect(screen.getByRole('link', { name: /comparar opciones evipro/i })).toHaveAttribute('href', '/planes#evipro')
   })
 })

@@ -5,8 +5,8 @@ export const metadata = publicMetadata('/politica-devoluciones', 'Política de C
 
 export default function PoliticaDevolucionesPage() {
   return (
-    <main className="min-h-screen bg-ink text-white py-20 px-4">
-      <div className="max-w-3xl mx-auto">
+    <main className="public-page min-h-screen bg-ink text-white py-20 px-4">
+      <div className="public-panel max-w-3xl mx-auto rounded-lg p-6 sm:p-10">
         <p className="text-xs font-mono uppercase tracking-widest text-brand mb-4">Legal</p>
         <h1 className="text-4xl font-light font-serif italic mb-2">Política de Cancelaciones y Reembolsos</h1>
         <p className="text-faint text-xs font-mono mb-12">Última actualización: junio 2026</p>

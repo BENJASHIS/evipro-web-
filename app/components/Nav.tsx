@@ -4,16 +4,13 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Marca from '@/app/components/ui/Marca'
 
-// Orden = el camino de quien llega de cero: primero lo que ve (con quién
-// trabajamos), después lo que cuesta, y al final las dos acciones de cuenta.
-// «Médicos» no está como enlace a propósito: el botón Agendar lleva ahí y
-// decirlo dos veces era la misma puerta repetida.
+// Atención, equipo y comunidad, seguidos de las opciones de cuenta y reserva.
 const LINKS = [
   { href: '/consulta-cannabis-medicinal', label: 'Consulta médica' },
-  { href: '/aliados', label: 'Aliados' },
-  { href: '/planes', label: 'Planes' },
+  { href: '/medicos', label: 'Equipo médico' },
+  { href: '/aliados', label: 'Colaborar' },
+  { href: '/planes', label: 'Membresías' },
   { href: '/planes#turista', label: 'Turistas' },
-  { href: '/registro', label: 'Unirme' },
   { href: '/login', label: 'Ingresar' },
 ]
 
@@ -26,7 +23,7 @@ export default function Nav() {
         <Marca />
 
         {/* Enlaces en escritorio */}
-        <div className="hidden md:flex items-center gap-6 text-xs font-mono text-muted">
+        <div className="hidden lg:flex items-center gap-4 text-xs font-mono text-muted">
           {LINKS.map(l => (
             <Link key={l.href} href={l.href} className="hover:text-white transition-colors">{l.label}</Link>
           ))}
@@ -44,7 +41,7 @@ export default function Nav() {
           aria-label="Menú"
           aria-expanded={open}
           onClick={() => setOpen(v => !v)}
-          className="md:hidden flex flex-col justify-center gap-1.5 w-9 h-9 -mr-2 shrink-0"
+          className="lg:hidden flex flex-col items-center justify-center gap-1.5 w-11 h-11 shrink-0"
         >
           <span className={`block h-0.5 w-6 bg-white transition-transform ${open ? 'translate-y-2 rotate-45' : ''}`} />
           <span className={`block h-0.5 w-6 bg-white transition-opacity ${open ? 'opacity-0' : ''}`} />
@@ -54,7 +51,7 @@ export default function Nav() {
 
       {/* Menú desplegable en móvil */}
       {open && (
-        <div className="md:hidden mt-3 flex flex-col gap-1 text-sm font-mono text-muted border-t border-subtle pt-3">
+        <div className="lg:hidden mt-3 flex flex-col gap-1 text-sm font-mono text-muted border-t border-subtle pt-3">
           {LINKS.map(l => (
             <Link
               key={l.href}

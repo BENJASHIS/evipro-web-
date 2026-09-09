@@ -53,7 +53,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-ink">
+    <main className="public-page min-h-screen flex items-center justify-center bg-ink">
       <div className="w-full max-w-sm p-8 border border-subtle rounded-lg">
         <div className="mb-2"><Marca size={36} /></div>
         <p className="text-sm text-muted mb-8">Ingresa a tu membresía</p>

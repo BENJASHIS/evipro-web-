@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { Hero } from '@/app/components/home/secciones'
-import { HERO, MEDICO, WHATSAPP } from '@/lib/home-content'
+import { HERO, WHATSAPP } from '@/lib/home-content'
 import { DOCTORS } from '@/lib/doctors'
 
-describe('Hero — doble puerta', () => {
+describe('Hero — marca, membresías y equipo', () => {
   it('mantiene el titular y el subtítulo del contenido, sin inventar copy', () => {
     render(<Hero />)
     expect(screen.getByRole('heading', { level: 1 }).textContent)
@@ -14,18 +14,18 @@ describe('Hero — doble puerta', () => {
 
   it('ofrece las dos puertas y cada una lleva a un sitio distinto', () => {
     render(<Hero />)
-    const local = screen.getByText(HERO.puertas.local.cta).closest('a')
-    const viaje = screen.getByText(HERO.puertas.viaje.cta).closest('a')
-    expect(local?.getAttribute('href')).toContain('/agendar')
-    expect(viaje?.getAttribute('href')).toContain('turista')
+    const local = screen.getByText('Conocer las membresías →').closest('a')
+    const viaje = screen.getByText('Buscar una consulta →').closest('a')
+    expect(local?.getAttribute('href')).toContain('/planes#membresias')
+    expect(viaje?.getAttribute('href')).toContain('/medicos')
     expect(local?.getAttribute('href')).not.toBe(viaje?.getAttribute('href'))
   })
 
-  it('la puerta local es la acción primaria y la de viaje la secundaria', () => {
+  it('la membresía es primaria y la consulta sigue accesible', () => {
     // Dos puertas no son dos acciones iguales: el paciente local es la base.
     render(<Hero />)
-    expect(screen.getByText(HERO.puertas.local.cta).className).toContain('bg-brand')
-    expect(screen.getByText(HERO.puertas.viaje.cta).className).not.toContain('bg-brand')
+    expect(screen.getByText('Conocer las membresías →').className).toContain('bg-brand')
+    expect(screen.getByText('Buscar una consulta →').className).not.toContain('bg-brand')
   })
 
   it('WhatsApp es un botón con el número real, no un texto suelto', () => {
@@ -35,15 +35,13 @@ describe('Hero — doble puerta', () => {
     expect(wa?.className).toContain('border')
   })
 
-  it('la confianza sube al hero: foto, nombre y colegiatura', () => {
+  it('presenta a ambos médicos con sus perfiles y credenciales del catálogo', () => {
     render(<Hero />)
-    expect(screen.getByAltText(MEDICO.nombre)).toBeTruthy()
-    expect(screen.getByText(MEDICO.credenciales)).toBeTruthy()
-  })
-
-  it('la foto del hero es la misma que la ficha del médico', () => {
-    // Un segundo sitio con la ruta a mano se desincroniza en silencio.
-    const jara = DOCTORS.find(d => d.slug === 'dr-jara')
-    expect(MEDICO.foto).toBe(jara?.photo)
+    for (const doctor of DOCTORS) {
+      expect(screen.getByAltText(doctor.name)).toBeTruthy()
+      expect(screen.getByText(`CMP ${doctor.cmp}`)).toBeTruthy()
+      expect(screen.getByText(doctor.name).closest('a')?.getAttribute('href'))
+        .toBe(`/medicos/${doctor.slug}`)
+    }
   })
 })

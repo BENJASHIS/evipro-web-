@@ -10,7 +10,7 @@ export const metadata: Metadata = publicMetadata('/medicos', 'Equipo médico y r
 
 export default function MedicosPage() {
   return (
-    <main className="min-h-screen bg-ink text-white">
+    <main className="public-page min-h-screen bg-ink text-white">
       <Nav />
       <div className="max-w-5xl mx-auto px-4 py-16">
         <Badge className="mb-4">Equipo Médico</Badge>

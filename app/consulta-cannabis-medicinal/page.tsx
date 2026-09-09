@@ -38,7 +38,7 @@ export default function ConsultaCannabisPage() {
   }
 
   return (
-    <main className="min-h-screen bg-ink text-white">
+    <main className="public-page min-h-screen bg-ink text-white">
       <Nav />
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
@@ -58,7 +58,7 @@ export default function ConsultaCannabisPage() {
           <Button variant="outline" href="#modalidades">Ver modalidades y precios</Button>
         </div>
 
-        <section id="modalidades" className="scroll-mt-8 border-t border-subtle py-10">
+        <section id="modalidades" className="public-panel scroll-mt-8 rounded-lg px-6 py-10 mb-10">
           <h2 className="text-2xl font-serif mb-3">Modalidades y precios de consulta</h2>
           <p className="text-muted mb-6">Tarifa regular, sin membresía. El precio corresponde a la atención médica.</p>
           <div className="grid md:grid-cols-2 gap-8">

@@ -4,44 +4,41 @@ import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { META_PORTADA } from '@/lib/home-content'
 import { publicMetadata } from '@/lib/seo'
 import {
-  Hero, ParaQueSi, ParaQueNo, Preguntas, QuienTeAtiende,
-  PrimeraConsulta, OtrasEspecialidades, Membresia, EvidenciaLimites,
+  Modalidades, CierreConsulta, Hero, Participar, QuienTeAtiende,
+  OtrasEspecialidades, Membresia,
 } from '@/app/components/home/secciones'
 
 /** Solo para «/». El layout mantiene su título para el resto del sitio: cambiarlo
  *  ahí afectaría a páginas que no se rediseñaron en este trabajo. */
 export const metadata: Metadata = publicMetadata('/', META_PORTADA.titulo, META_PORTADA.descripcion)
 
-/** Precio de entrada a la membresía EVIPro, leído de la tabla en vez de
- *  escrito aquí. Filtra por type='evipro' a propósito: la frase que acompaña
- *  este número (en MEMBRESIA.texto) dice que la membresía abarata cada
- *  consulta, y esa es la EVIPro — la Básica tiene descuento 0% y no
- *  incluye nada, así que su precio (más barato) nunca debe salir aquí. */
-async function precioDesde(): Promise<number | null> {
+/** Los precios de cada membresía se leen por separado del catálogo público. */
+async function preciosMembresia(): Promise<{ evipro: number | null; basica: number | null }> {
   const supabase = await createServerSupabaseClient()
   const { data } = await supabase
     .from('membership_plans')
-    .select('price_soles')
-    .eq('type', 'evipro')
+    .select('type, price_soles')
+    .in('type', ['evipro', 'basica'])
     .order('price_soles', { ascending: true })
-    .limit(1)
-  return data?.[0]?.price_soles ?? null
+    .limit(50)
+  return {
+    evipro: data?.find(p => p.type === 'evipro')?.price_soles ?? null,
+    basica: data?.find(p => p.type === 'basica')?.price_soles ?? null,
+  }
 }
 
 export default async function Home() {
-  const desde = await precioDesde()
+  const precios = await preciosMembresia()
   return (
-    <main className="min-h-screen bg-ink text-white">
+    <main className="public-page home-page min-h-screen bg-ink text-white">
       <Nav />
       <Hero />
-      <ParaQueSi />
-      <ParaQueNo />
-      <EvidenciaLimites />
-      <Preguntas />
+      <Membresia desde={precios.evipro} basica={precios.basica} />
+      <Modalidades />
       <QuienTeAtiende />
-      <PrimeraConsulta />
       <OtrasEspecialidades />
-      <Membresia desde={desde} />
+      <Participar />
+      <CierreConsulta />
     </main>
   )
 }

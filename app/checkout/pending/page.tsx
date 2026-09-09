@@ -3,7 +3,7 @@
 // la membresía cuando el pago se acredite.
 export default function CheckoutPendingPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-ink text-white px-6">
+    <main className="public-page min-h-screen flex items-center justify-center bg-ink text-white px-6">
       <div className="w-full max-w-sm p-8 border border-subtle rounded-lg text-center">
         <p className="text-4xl mb-4">⏳</p>
         <p className="text-xs text-brand font-mono uppercase tracking-widest mb-2">Pago en proceso</p>

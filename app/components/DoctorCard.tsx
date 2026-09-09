@@ -6,7 +6,7 @@ export default function DoctorCard({ doctor }: { doctor: Doctor }) {
   return (
     <Link
       href={`/medicos/${doctor.slug}`}
-      className="block border border-subtle rounded-lg overflow-hidden hover:border-brand/50 transition-colors group"
+      className="public-panel block border border-subtle rounded-lg overflow-hidden hover:border-brand/50 transition-colors group"
     >
       <div className="relative h-48 bg-gradient-to-br from-surface to-ink">
         <Image

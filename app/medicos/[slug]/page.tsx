@@ -25,7 +25,7 @@ export default async function DoctorPage({ params }: Props) {
   if (!doctor) notFound()
 
   return (
-    <main className="min-h-screen bg-ink text-white">
+    <main className="public-page min-h-screen bg-ink text-white">
       <Nav />
       <div className="max-w-5xl mx-auto px-4 py-16">
         <Link
@@ -106,7 +106,7 @@ export default async function DoctorPage({ params }: Props) {
 
           {/* Sidebar */}
           <div className="space-y-4">
-            <div className="border border-subtle rounded-lg p-5">
+            <div className="public-panel border border-subtle rounded-lg p-5">
               <p className="text-xs font-mono uppercase tracking-widest text-brand mb-3">
                 Disponibilidad
               </p>
@@ -116,7 +116,7 @@ export default async function DoctorPage({ params }: Props) {
               </p>
             </div>
 
-            <div className="border border-subtle rounded-lg p-5">
+            <div className="public-panel border border-subtle rounded-lg p-5">
               <p className="text-xs font-mono uppercase tracking-widest text-brand mb-3">
                 Planes que atiende
               </p>

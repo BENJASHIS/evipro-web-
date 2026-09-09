@@ -11,7 +11,7 @@ export const metadata: Metadata = publicMetadata('/aliados', 'Aliados · EVIPro'
 
 export default function AliadosPage() {
   return (
-    <main className="min-h-screen bg-ink text-white">
+    <main className="public-page min-h-screen bg-ink text-white">
       <Nav />
       <div className="max-w-5xl mx-auto px-4 py-16">
         <Badge className="mb-4">Aliados</Badge>
@@ -28,7 +28,7 @@ export default function AliadosPage() {
           {ALIADOS.map(aliado => (
             <div
               key={aliado.slug}
-              className="border border-subtle rounded-lg p-6 flex flex-col sm:flex-row items-center gap-5"
+              className="public-panel border border-subtle rounded-lg p-6 flex flex-col sm:flex-row items-center gap-5"
             >
               {/* Fondo blanco: varios logos vienen con fondo blanco y otros con
                   transparencia, y sobre el tema oscuro se leerían distinto. */}
@@ -76,11 +76,11 @@ export default function AliadosPage() {
 
         {/* Puerta de propuestas */}
         <section id="propuesta" className="mt-16 border-t border-subtle pt-12 scroll-mt-8">
-          <h2 className="text-2xl font-light font-serif italic mb-3">¿Quieres trabajar con nosotros?</h2>
+          <h2 className="text-2xl font-light font-serif italic mb-3">Profesionales y organizaciones: propongan una colaboración</h2>
           <p className="text-muted text-sm mb-8 max-w-xl">
-            No hace falta ser médico ni tener consultorio: si haces algo que se cruza con lo que
-            hacemos y quieres proponer un trabajo conjunto, cuéntalo aquí. Tres preguntas concretas,
-            porque una idea sin qué aporta cada uno no se puede evaluar.
+            Puedes proponer atención profesional, educación, colaboración técnica o un patrocinio.
+            Cuéntanos qué aportas, qué necesitas y a quién beneficia. Cada propuesta se evalúa antes
+            de incorporarse; enviarla no implica aprobación ni aparecer en el directorio de aliados.
           </p>
           <PropuestaForm />
         </section>

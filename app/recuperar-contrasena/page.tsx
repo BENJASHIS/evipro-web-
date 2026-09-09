@@ -59,7 +59,7 @@ export default function RecuperarContrasenaPage() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-ink px-4">
+    <main className="public-page min-h-screen flex items-center justify-center bg-ink px-4">
       <div className="w-full max-w-sm p-8 border border-subtle rounded-lg">
         <div className="mb-2"><Marca size={36} /></div>
         <p className="text-sm text-muted mb-8">Recupera tu acceso</p>

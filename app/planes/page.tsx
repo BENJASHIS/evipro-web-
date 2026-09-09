@@ -81,7 +81,7 @@ export default async function PlanesPage() {
   const eviproPlans = (basePlans ?? []).filter(p => p.type === 'evipro') as MembershipPlan[]
 
   return (
-    <main className="min-h-screen bg-ink text-white">
+    <main className="public-page min-h-screen bg-ink text-white">
       <Nav />
       <header className="max-w-5xl mx-auto px-4 pt-16 pb-10">
         <Badge className="mb-4">Planes y herramientas</Badge>
@@ -175,7 +175,7 @@ export default async function PlanesPage() {
         </p>
 
         <div className="grid gap-4 mb-6 lg:grid-cols-3">
-          <article className="border border-subtle rounded-lg p-6">
+          <article className="public-panel border border-subtle rounded-lg p-6">
             <p className="text-xs font-mono text-faint uppercase tracking-widest mb-3">0 · Consulta suelta</p>
             <h3 className="text-xl font-light mb-2">Para resolver si corresponde</h3>
             <p className="text-muted text-sm leading-relaxed mb-4">
@@ -187,7 +187,7 @@ export default async function PlanesPage() {
           </article>
 
           {basica && (
-            <article className="border border-subtle rounded-lg p-6 bg-white/[0.02]">
+            <article id="basica" className="public-panel scroll-mt-8 border border-subtle rounded-lg p-6 bg-white/[0.02]">
               <p className="text-xs font-mono text-faint uppercase tracking-widest mb-3">1 · Entrada al club</p>
               <h3 className="text-xl font-light mb-2">Membresía Básica</h3>
               <p className="text-muted text-sm leading-relaxed mb-4">
@@ -211,7 +211,7 @@ export default async function PlanesPage() {
             </article>
           )}
 
-          <article className="border border-brand/40 rounded-lg p-6 bg-brand/5">
+          <article id="evipro" className="public-panel scroll-mt-8 border border-brand/40 rounded-lg p-6 bg-brand/5">
             <p className="text-xs font-mono text-brand uppercase tracking-widest mb-3">2 · Más útil para seguimiento</p>
             <h3 className="text-xl font-light mb-2">Membresía EVIPro</h3>
             <p className="text-muted text-sm leading-relaxed mb-4">

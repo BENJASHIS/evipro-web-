@@ -26,7 +26,7 @@ export default async function AgendarPage(
   if (!doctor) notFound()
 
   return (
-    <main className="min-h-screen bg-ink text-white">
+    <main className="public-page min-h-screen bg-ink text-white">
       <Nav />
       <div className="max-w-5xl mx-auto px-4 py-16">
         <div className="flex items-center gap-4 mb-12">

@@ -220,7 +220,7 @@ function CheckoutForm() {
 
 export default function CheckoutPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-ink text-white">
+    <main className="public-page min-h-screen flex items-center justify-center bg-ink text-white">
       <Suspense fallback={<div className="text-muted">Cargando...</div>}>
         <CheckoutForm />
       </Suspense>
